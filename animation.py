@@ -50,7 +50,7 @@ temperature_anim = np.maximum(temperature_anim, 273)  # Set minimum temperature 
 # Time Grid (Reduced Time Points for Animation)
 warm_up_time = 0                # Warm-up time (seconds)
 total_simulation_time = 10000   # Total simulation time (seconds)
-time_points_anim = 1000          # Number of time points (adjusted for animation)
+time_points_anim = 10000          # Number of time points (adjusted for animation)
 times_anim = np.linspace(-warm_up_time, total_simulation_time, time_points_anim)
 dt_anim = times_anim[1] - times_anim[0]
 
@@ -93,7 +93,7 @@ total_flare_durations = flare_rise_times + flare_decay_times
 
 # Flare Sizes (Radial and Angular)
 min_flare_size_r = 1e8      # Minimum flare radial size (meters)
-max_flare_size_r = 1e10     # Maximum flare radial size (meters)
+max_flare_size_r = 1e9     # Maximum flare radial size (meters)
 min_flare_size_theta = np.pi / 100  # Minimum flare angular size (radians)
 max_flare_size_theta = np.pi / 10   # Maximum flare angular size (radians)
 flare_size_r_grid_multiplier = 10  # Minimum radial grid cells for flare size
@@ -176,7 +176,7 @@ Y_anim = Radii_anim * np.sin(Theta_anim)
 # Prepare figure and axis for animation
 fig, ax = plt.subplots(figsize=(8, 8))
 norm = colors.LogNorm(vmin=temperature_anim.min(), vmax=temperature_anim.max() * 1.5)
-cmap = plt.get_cmap('inferno')
+cmap = plt.get_cmap('magma')
 
 # Initial plot
 c = ax.pcolormesh(X_anim, Y_anim, total_temperature_anim[:, :, 0], norm=norm, cmap=cmap, shading='auto')
