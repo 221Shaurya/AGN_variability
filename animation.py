@@ -22,12 +22,12 @@ dot_M = 1e23        # Accretion rate (kg/s)
 R_ISCO = 6 * G * M_BH / c**2
 
 # Grid Setup
-num_points_anim = 200               # Number of radial grid points (adjusted for animation)
-num_angular_sections_anim = 100     # Number of angular grid points (adjusted for animation)
+num_points_anim = 1000              # Number of radial grid points (adjusted for animation)
+num_angular_sections_anim = 100    # Number of angular grid points (adjusted for animation)
 
 # Radial Range
 R_in = R_ISCO                    # Inner radius (meters)
-R_out = 50 * R_ISCO              # Outer radius (meters) reduced for visualization
+R_out = 100 * R_ISCO              # Outer radius (meters) reduced for visualization
 radii_anim = np.linspace(R_in, R_out, num_points_anim)   # Radial positions (meters)
 dr_anim = radii_anim[1] - radii_anim[0]                  # Radial grid spacing (meters)
 theta_coords_anim = np.linspace(0, 2 * np.pi, num_angular_sections_anim, endpoint=False)  # Angular positions (radians)
@@ -50,7 +50,7 @@ temperature_anim = np.maximum(temperature_anim, 273)  # Set minimum temperature 
 # Time Grid (Reduced Time Points for Animation)
 warm_up_time = 0                # Warm-up time (seconds)
 total_simulation_time = 10000   # Total simulation time (seconds)
-time_points_anim = 10000          # Number of time points (adjusted for animation)
+time_points_anim = 1000          # Number of time points (adjusted for animation)
 times_anim = np.linspace(-warm_up_time, total_simulation_time, time_points_anim)
 dt_anim = times_anim[1] - times_anim[0]
 
@@ -62,7 +62,7 @@ num_flares = 1000  # Number of flares
 
 # Flare Temperature Increases
 flare_temp_increase_min = 1     # Minimum temperature increase factor
-flare_temp_increase_max = 1.9   # Maximum temperature increase factor
+flare_temp_increase_max = 2   # Maximum temperature increase factor
 flare_temp_increase_power_law_index = 1.5  # Power-law index
 temperature_increases = flare_temp_increase_min + (flare_temp_increase_max - flare_temp_increase_min) * np.random.power(a=flare_temp_increase_power_law_index, size=num_flares)
 
@@ -75,8 +75,8 @@ flare_angles = np.random.randint(0, num_angular_sections_anim, size=num_flares)
 # Flare Durations
 flare_rise_time_min = 10    # Minimum flare rise time (seconds)
 flare_rise_time_max = 50    # Maximum flare rise time (seconds)
-flare_e_folding_time_min = 20  # Minimum e-folding time (seconds)
-flare_e_folding_time_max = 100  # Maximum e-folding time (seconds)
+flare_e_folding_time_min = flare_rise_time_min  # Minimum e-folding time (seconds)
+flare_e_folding_time_max = flare_rise_time_max  # Maximum e-folding time (seconds)
 flare_decay_e_folding_multiplicator = 5   # Number of e-folding times in decay phase
 
 # Flare Rise Times (seconds)
@@ -93,7 +93,7 @@ total_flare_durations = flare_rise_times + flare_decay_times
 
 # Flare Sizes (Radial and Angular)
 min_flare_size_r = 1e8      # Minimum flare radial size (meters)
-max_flare_size_r = 1e9     # Maximum flare radial size (meters)
+max_flare_size_r = 1e10     # Maximum flare radial size (meters)
 min_flare_size_theta = np.pi / 100  # Minimum flare angular size (radians)
 max_flare_size_theta = np.pi / 10   # Maximum flare angular size (radians)
 flare_size_r_grid_multiplier = 10  # Minimum radial grid cells for flare size
