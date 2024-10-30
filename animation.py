@@ -92,8 +92,8 @@ flare_decay_times = flare_decay_e_folding_multiplicator * flare_e_folding_times
 total_flare_durations = flare_rise_times + flare_decay_times
 
 # Flare Sizes (Radial and Angular)
-min_flare_size_r = 1e8      # Minimum flare radial size (meters)
-max_flare_size_r = 1e10     # Maximum flare radial size (meters)
+min_flare_size_r = 1e9      # Minimum flare radial size (meters)
+max_flare_size_r = 1e11     # Maximum flare radial size (meters)
 min_flare_size_theta = np.pi / 100  # Minimum flare angular size (radians)
 max_flare_size_theta = np.pi / 10   # Maximum flare angular size (radians)
 flare_size_r_grid_multiplier = 10  # Minimum radial grid cells for flare size
