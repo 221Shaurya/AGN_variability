@@ -23,7 +23,7 @@ R_ISCO = 6 * G * M_BH / c**2
 
 # Grid Setup
 num_points_anim = 1000              # Number of radial grid points (adjusted for animation)
-num_angular_sections_anim = 100    # Number of angular grid points (adjusted for animation)
+num_angular_sections_anim = 180    # Number of angular grid points (adjusted for animation)
 
 # Radial Range
 R_in = R_ISCO                    # Inner radius (meters)
